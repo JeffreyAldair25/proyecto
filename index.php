@@ -1,7 +1,10 @@
 <?php
+//LLamando a la bd
 include "admin/db.php";
+
 $db=con();
 error_reporting (0);
+//LLamando archivo
 include 'Cart.php';
 $cart = new Cart; 
 $varsesion = $_SESSION['user'];
@@ -12,6 +15,7 @@ $footer=get_footers();
 
 
 
+
 $query="select * from users where user='$varsesion'";
 $result=mysqli_query($db,$query);
        
@@ -19,9 +23,11 @@ $result=mysqli_query($db,$query);
 
 
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -32,18 +38,25 @@ $result=mysqli_query($db,$query);
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://code.jquery.com/jquery-2.2.0.min.js" type="text/javascript"></script>
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
-    <title>Dragon Table Tennis</title>
+   
+<title>Dragon Table Tennis</title>
   
 </head>
+
 <body>
+
    <header id="headmain">
    <div class="logohead">
+
            <img src="images/logo.png" alt="">
+
        </div>
    <nav id="menu">
  
      <ul class="no_list">
+
      <?php foreach($encabezados as $img):?>
+
          <li><a href="<?php echo $img->url_enc; ?>"><?php echo $img->nom_enc; ?></a></li>
          <?php endforeach;?>
 
@@ -63,21 +76,30 @@ $result=mysqli_query($db,$query);
  </nav>
   
 
+
    </header>
 
    <div class="ms_grandiet">
     <div id="slides">
   <ul class="slides-container">
+
+
   <?php foreach($slide as $img): ?>
     <li>
+
       <img src="<?php echo 'admin/'.$img->folder.$img->src ?>" alt="">
     
     </li>
+
     <?php endforeach;?>
   </ul>
+
+
   <nav class="slides-navigation">
+
     <a href="#" class="next">></a>
     <a href="#" class="prev"><</a>
+
   </nav>
 </div>
 </div>
@@ -90,14 +112,17 @@ $result=mysqli_query($db,$query);
   </div>
   <div class="search">
 <form action="" method="post">
+
 <label for="Noticia"></label>
 <input  name="PalabraClave" required  type="text" class="form-control mb-2" id="inlineFormInput" placeholder="Ingrese titulo">
 <input name="buscar" type="hidden" class="form-control mb-2" id="inlineFormInput" value="v">
 <input type="date" required name="fecha1" id="fecha1">
 <input type="date" required name="fecha2" id="fecha2">
       <button type="submit" name="submit" id="submit" class="btn btn-primary mb-2">Buscar Ahora</button>
-</form>
+
+    </form>
 </div>
+
 <div class="content_card REX">
 <?php foreach($noticias as $img):
     $link = 'detallenoticia.php?nom_noticia='.  $img->nom_noticia;?>
@@ -181,15 +206,21 @@ $result=mysqli_query($db,$query);
 
 
 <footer>
+
 <?php foreach($footer as $img):?>
 <li>
+
   <p>Dirección : <br> <?php echo $img->direccion_footer; ?>  </p>
   <p>Celular : <br> <?php echo $img->cel_footer; ?> </p>
   <p>Telefono : <br> <?php echo $img->tel_footer; ?> </p>
   <p>Horario : <br> <?php echo $img->horarios_footer; ?> </p>
+
 </li>
+
 <li>
+
 <p>Facebook : <br> <?php echo $img->facebook_footer; ?> </p>
+
 <p>email : <br><?php echo $img->email_footer; ?> </p>
 </li>
 
@@ -199,6 +230,8 @@ $result=mysqli_query($db,$query);
 
 
 <!----ZONA DE JS ------------------------------------------------->
+
+
 <script src="js/jquery.superslides.min.js"></script>
 <script src="js/truncate.min.js"></script>
 <script>
@@ -235,6 +268,7 @@ currentElement.truncate(config);
 <script>
 
 function countChars(obj){
+  
     var maxLength = 500;
     var strLength = obj.value.length;
     
